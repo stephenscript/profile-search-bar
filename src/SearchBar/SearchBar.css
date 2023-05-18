@@ -2,7 +2,7 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  background-color: #F2F2F5;
+  background-color: #f2f2f5;
   border-radius: 20px;
   width: 360px;
   height: 42px;
@@ -22,11 +22,65 @@
 
 #search {
   all: unset;
-
   position: absolute;
   align-self: center;
-  left: 14%;
+  left: 13%;
   height: 80%;
-  width: 70%;
-  background-color: rgba(0,0,0,0);
+  width: 75%;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("../assets/fonts/Circular/CircularStd-Black.eot") format("truetype");
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("../assets/fonts/Circular/CircularStd-Bold.eot") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("../assets/fonts/Circular/CircularStd-BlackItalic.eot")
+    format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("../assets/fonts/SF/SF-Pro-Display-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("../assets/fonts/SF/SF-Pro-Display-Bold.otf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("../assets/fonts/SF/SF-Pro-Text-RegularItalic.otf")
+    format("truetype");
+  font-style: italic;
 }
