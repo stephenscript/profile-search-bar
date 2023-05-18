@@ -1,0 +1,9 @@
+.popup {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  height: 694px;
+  border-radius: 20px;
+  outline: 1px solid #E1E1E3;
+  margin-top: 5px;
+}

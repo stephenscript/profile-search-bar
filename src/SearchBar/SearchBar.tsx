@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./SearchBar.css";
+import SearchPopup from "../SearchPopup/SearchPopup";
 import { magnifyingGlass, xButton } from "../assets/svgs";
 
 function SearchBar() {
@@ -7,10 +8,10 @@ function SearchBar() {
     <>
       <div className="bar">
         <input id="search" />
-        <svg id="mag" width="19">{magnifyingGlass}</svg>
-        <svg id="xb" width="16">{xButton}</svg>
+        {magnifyingGlass}
+        {xButton}
       </div>
-     
+      <SearchPopup />
     </>
   );
 }
