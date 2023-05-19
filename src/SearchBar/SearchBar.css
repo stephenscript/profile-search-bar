@@ -18,69 +18,17 @@
   position: absolute;
   top: 27%;
   right: 5%;
+  background-color: #efefef;
 }
 
 #search {
   all: unset;
   position: absolute;
   align-self: center;
-  left: 13%;
+  left: 14%;
   height: 80%;
   width: 75%;
   background-color: rgba(0, 0, 0, 0);
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-}
-
-@font-face {
-  font-family: "Circular";
-  src: url("../assets/fonts/Circular/CircularStd-Black.eot") format("truetype");
-}
-
-@font-face {
-  font-family: "Circular";
-  src: url("../assets/fonts/Circular/CircularStd-Bold.eot") format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Circular";
-  src: url("../assets/fonts/Circular/CircularStd-BlackItalic.eot")
-    format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../assets/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../assets/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("../assets/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "SF";
-  src: url("../assets/fonts/SF/SF-Pro-Display-Regular.otf") format("truetype");
-}
-
-@font-face {
-  font-family: "SF";
-  src: url("../assets/fonts/SF/SF-Pro-Display-Bold.otf") format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "SF";
-  src: url("../assets/fonts/SF/SF-Pro-Text-RegularItalic.otf")
-    format("truetype");
-  font-style: italic;
 }
