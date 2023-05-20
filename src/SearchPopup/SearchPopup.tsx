@@ -10,17 +10,21 @@ const sections: Record<SectionKeys, JSX.Element> = {
   Articles: <h1>3</h1>,
 };
 
-function SearchPopup() {
+function SearchPopup({ searchResults, showResults }) {
   const sectionElements: JSX.Element[] = Object.entries(sections).map(
     ([sectionKey, sectionValue]) => (
       <div key={sectionKey}>
-        <h1>{sectionKey}</h1>
+        <h1>{}</h1>
         {sectionValue}
       </div>
     )
   );
 
-  return <div className="popup">{sectionElements}</div>;
+  return showResults ? (
+    <>
+      <div className="popup">{sectionElements}</div>
+    </>
+  ) : null;
 }
 
 export default SearchPopup;

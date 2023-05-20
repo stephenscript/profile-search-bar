@@ -1,15 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import algoliasearch, { SearchClient } from "algoliasearch/lite";
+import algoliasearch, { SearchIndex } from "algoliasearch/lite";
 
-const search = async (
-  clients: { name: string; client: any }[],
-  searchTerm: string
-) => {
+const search = async (indices: SearchIndex[], searchTerm: string) => {
   const results: { [key: string]: any } = {};
   try {
-    for (const { name, client } of clients) {
-      const res = await client.search([searchTerm]);
-      results[name] = res.hits;
+    for (const [name, index] of Object.entries(indices)) {
+      const res = await index.search([searchTerm]);
+      // default to top 6 most popular results
+      results[name] = searchTerm ? res.hits : res.hits.slice(0, 6);
     }
     return results;
   } catch (err) {
@@ -18,6 +16,7 @@ const search = async (
 };
 
 export function useSearch() {
+  // initialize algolia client
   const algolia = useRef<any>(
     algoliasearch(
       import.meta.env.VITE_ALGOLIA_ID,
@@ -25,21 +24,23 @@ export function useSearch() {
     )
   );
 
-  const mentorsClient = useRef<SearchClient | null>(
+  // initialize algolia client indices
+  const mentorsIndex = useRef<SearchIndex | null>(
     algolia.current?.initIndex("production_user_profiles")
   );
-  const topicsClient = useRef<SearchClient | null>(
+  const topicsIndex = useRef<SearchIndex | null>(
     algolia.current?.initIndex("production_topics")
   );
-  const articlesClient = useRef<SearchClient | null>(
+  const articlesIndex = useRef<SearchIndex | null>(
     algolia.current?.initIndex("production_content_articles")
   );
 
-  const clients = [
-    { name: "mentors", client: mentorsClient.current },
-    { name: "topics", client: topicsClient.current },
-    { name: "articles", client: articlesClient.current },
-  ];
+  // provide each client index a label
+  const indices = {
+    mentors: mentorsIndex.current,
+    topics: topicsIndex.current,
+    articles: articlesIndex.current,
+  };
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setResults] = useState<{ [key: string]: any } | null>(
@@ -47,7 +48,7 @@ export function useSearch() {
   );
 
   useEffect(() => {
-    search(clients, searchTerm).then((res = {}) => {
+    search(indices, searchTerm).then((res = {}) => {
       setResults(res);
     });
   }, [searchTerm]);
