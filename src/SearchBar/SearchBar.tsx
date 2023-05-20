@@ -3,7 +3,7 @@ import { useSearch } from "./UseSearch";
 
 import "./SearchBar.css";
 import SearchPopup from "../SearchPopup/SearchPopup";
-import { magnifyingGlass, xButton } from "../assets/svgs";
+import { magnifyingGlass, xButton, circle} from "../assets/svgs";
 
 const handleClose = (input, setInput, setShowResults) => {
   if (!input.length) {
@@ -12,6 +12,17 @@ const handleClose = (input, setInput, setShowResults) => {
     setInput('');
   }
 }
+
+const xButtonElement = () => {
+  return (
+    <>
+    hi
+    {xButton}
+    <div className="circle"></div>
+    </>
+  )
+}
+
 
 function SearchBar() {
   const [input, setInput] = useState("");
@@ -23,6 +34,7 @@ function SearchBar() {
     return () => clearTimeout(id);
   }, [input]);
   
+
 
   return (
     <>
@@ -36,8 +48,10 @@ function SearchBar() {
             onFocus={() => setShowResults(true)}
             autoComplete="off"
           />
-          <div id="mag">{magnifyingGlass}</div>
-          <div id="xb" onClick={() => handleClose(input, setInput, setShowResults)}>{showResults ? xButton : null}</div>
+          <div className="mag">{magnifyingGlass}</div>
+          
+          <div className="xb" onClick={() => handleClose(input, setInput, setShowResults)}>{showResults ? <>{circle}{xButton}</> : null}</div>
+          
         </div>
         <SearchPopup searchResults={searchResults} showResults={showResults}/>
       </div>

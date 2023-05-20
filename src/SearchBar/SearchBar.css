@@ -20,21 +20,38 @@
 
 .bar-open {
   width: 360px;
+  background-color: white;
   transition: 0.1s;
 }
 
-#mag {
+.mag {
   position: absolute;
   top: 27%;
   left: 5%;
 }
 
-#xb {
+.xb {
+  position: absolute;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  top: 12%;
+  right: 2%;
+  cursor: pointer;
+}
+
+.xb svg {
+  grid-area: 1/1;
+  justify-self: center;
+}
+
+/* .circle {
   position: absolute;
   top: 27%;
   right: 5%;
   cursor: pointer;
-}
+} */
 
 #search {
   all: unset;
@@ -49,7 +66,7 @@
 }
 
 #search::placeholder {
-  color: rgb(0, 0, 0, 50%);
+  color: rgb(0, 0, 0, 30%);
 }
 
 .backdrop {

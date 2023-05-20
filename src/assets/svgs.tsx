@@ -1,5 +1,5 @@
 export const magnifyingGlass = (
-  <svg 
+  <svg
     width="19"
     height="19"
     viewBox="0 0 19 19"
@@ -44,8 +44,14 @@ export const xButton = (
   </svg>
 );
 
+export const circle = (
+  <svg height="32" width="32" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="15" fill="rgb(239,239,239)" />
+  </svg>
+);
+
 export const octothorp = (
-  <svg 
+  <svg
     width="16"
     height="16"
     viewBox="0 0 16 16"
