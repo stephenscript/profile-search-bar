@@ -1,7 +1,6 @@
 #search-bar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 20px;
   z-index: 999;
@@ -21,7 +20,7 @@
 .bar-open {
   width: 360px;
   background-color: white;
-  transition: 0.1s;
+  transition: 0.1s
 }
 
 .mag {
@@ -45,13 +44,6 @@
   grid-area: 1/1;
   justify-self: center;
 }
-
-/* .circle {
-  position: absolute;
-  top: 27%;
-  right: 5%;
-  cursor: pointer;
-} */
 
 #search {
   all: unset;

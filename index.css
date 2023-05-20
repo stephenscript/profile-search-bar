@@ -1,0 +1,56 @@
+/* Custom Fonts */
+@font-face {
+  font-family: "Circular";
+  src: url("./src/assets/fonts/Circular/CircularStd-Book.otf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("./src/assets/fonts/Circular/CircularStd-Medium.otf")
+    format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("./src/assets/fonts/Circular/CircularStd-BlackItalic.otf")
+    format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./src/assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./src/assets/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./src/assets/fonts/Roboto/Roboto-Italic.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("./src/assets/fonts/SF/SF-Pro-Display-Regular.otf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("./src/assets/fonts/SF/SF-Pro-Display-Semibold.otf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("./src/assets/fonts/SF/SF-Pro-Text-RegularItalic.otf")
+    format("truetype");
+  font-style: italic;
+}

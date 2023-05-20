@@ -1,4 +1,4 @@
-.popup {
+.search-popup {
   display: flex;
   flex-direction: column;
   width: 360px;
@@ -10,6 +10,23 @@
   background-color: white;
 }
 
+.search-popup-section-name {
+  padding: 18 0 0 25px;
+}
+
 .content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   overflow: auto;
+}
+
+.content > section {
+  padding-top: 15px;
+}
+
+.content > section > span {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }

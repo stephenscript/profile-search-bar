@@ -1,0 +1,47 @@
+.search-result-card {
+  display: flex;
+  cursor: pointer;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+}
+
+.search-result-card:hover {
+  background-color: rgb(239, 239, 239);
+}
+
+.search-result-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-card-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+}
+
+pre {
+  font-family: "SF", sans-serif;
+}
+
+pre {
+  font-size: 19px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 260px;
+  text-overflow: ellipsis;
+}
+
+#profile-name {
+  font-family: "Circular";
+  font-size: 18px;
+}
+
+#profile-subtext {
+  font-family: "Roboto";
+  font-size: 13px;
+  color: #6f6f6f;
+}

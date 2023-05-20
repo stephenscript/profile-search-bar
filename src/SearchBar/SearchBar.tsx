@@ -3,26 +3,15 @@ import { useSearch } from "./UseSearch";
 
 import "./SearchBar.css";
 import SearchPopup from "../SearchPopup/SearchPopup";
-import { magnifyingGlass, xButton, circle} from "../assets/svgs";
+import { magnifyingGlass, xButton, circle } from "../assets/svgs";
 
 const handleClose = (input, setInput, setShowResults) => {
   if (!input.length) {
-    setShowResults(false)
+    setShowResults(false);
   } else {
-    setInput('');
+    setInput("");
   }
-}
-
-const xButtonElement = () => {
-  return (
-    <>
-    hi
-    {xButton}
-    <div className="circle"></div>
-    </>
-  )
-}
-
+};
 
 function SearchBar() {
   const [input, setInput] = useState("");
@@ -30,11 +19,9 @@ function SearchBar() {
   const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
-    const id = setTimeout(() => setSearchTerm(input), 500);
+    const id = setTimeout(() => setSearchTerm(input), 0);
     return () => clearTimeout(id);
   }, [input]);
-  
-
 
   return (
     <>
@@ -49,13 +36,29 @@ function SearchBar() {
             autoComplete="off"
           />
           <div className="mag">{magnifyingGlass}</div>
-          
-          <div className="xb" onClick={() => handleClose(input, setInput, setShowResults)}>{showResults ? <>{circle}{xButton}</> : null}</div>
-          
+          <div
+            className="xb"
+            onClick={() => handleClose(input, setInput, setShowResults)}
+          >
+            {showResults ? (
+              <>
+                {circle}
+                {xButton}
+              </>
+            ) : null}
+          </div>
         </div>
-        <SearchPopup searchResults={searchResults} showResults={showResults}/>
+        {showResults ? (
+          <SearchPopup
+            searchResults={searchResults}
+            showResults={showResults}
+            input={input}
+          />
+        ) : null}
       </div>
-      {showResults ? <div className="backdrop" onClick={() => setShowResults(false)}></div> : null}
+      {showResults ? (
+        <div className="backdrop" onClick={() => setShowResults(false)}></div>
+      ) : null}
     </>
   );
 }
