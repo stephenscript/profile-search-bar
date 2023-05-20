@@ -6,4 +6,10 @@
   border-radius: 20px;
   outline: 1px solid #E1E1E3;
   margin-top: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.content {
+  overflow: auto;
 }

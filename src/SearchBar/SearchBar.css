@@ -1,11 +1,26 @@
+#search-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 999;
+}
+
 .bar {
   display: flex;
   position: relative;
   justify-content: space-between;
   background-color: #f2f2f5;
   border-radius: 20px;
-  width: 360px;
+  width: 250px;
   height: 42px;
+  transition: 0.1s;
+}
+
+.bar-open {
+  width: 360px;
+  transition: 0.1s;
 }
 
 #mag {
@@ -18,17 +33,28 @@
   position: absolute;
   top: 27%;
   right: 5%;
-  background-color: #efefef;
+  cursor: pointer;
 }
 
 #search {
   all: unset;
   position: absolute;
   align-self: center;
-  left: 14%;
+  margin-left: 50px;
   height: 80%;
   width: 75%;
   background-color: rgba(0, 0, 0, 0);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
+}
+
+#search::placeholder {
+  color: rgb(0, 0, 0, 50%);
+}
+
+.backdrop {
+  background-color: rgb(0, 0, 0, 10%);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
 }

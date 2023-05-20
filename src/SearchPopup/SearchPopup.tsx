@@ -10,11 +10,18 @@ const sections: Record<SectionKeys, JSX.Element> = {
   Articles: <h1>3</h1>,
 };
 
-function SearchPopup({ searchResults, showResults }) {
+function SearchPopup({ searchResults, showResults}) {
   const sectionElements: JSX.Element[] = Object.entries(sections).map(
     ([sectionKey, sectionValue]) => (
       <div key={sectionKey}>
         <h1>{}</h1>
+        {sectionValue}
+        {sectionValue}
+        {sectionValue}
+        {sectionValue}
+        {sectionValue}
+        {sectionValue}
+        {sectionValue}
         {sectionValue}
       </div>
     )
@@ -22,7 +29,9 @@ function SearchPopup({ searchResults, showResults }) {
 
   return showResults ? (
     <>
-      <div className="popup">{sectionElements}</div>
+      <div className="popup">
+        <div className="content">{sectionElements}</div>
+      </div>
     </>
   ) : null;
 }

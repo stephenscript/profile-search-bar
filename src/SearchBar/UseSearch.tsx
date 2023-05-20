@@ -35,7 +35,7 @@ export function useSearch() {
     algolia.current?.initIndex("production_content_articles")
   );
 
-  // provide each client index a label
+  // provide a label to each index
   const indices = {
     mentors: mentorsIndex.current,
     topics: topicsIndex.current,
