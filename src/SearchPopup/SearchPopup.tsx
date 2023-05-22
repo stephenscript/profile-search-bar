@@ -54,10 +54,10 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
     .filter((section) => section)
     .map((section, i) =>
       i > 0 ? (
-        <>
+        <React.Fragment key={i}>
           <div className="thin-divider"></div>
           {section}
-        </>
+          </React.Fragment>
       ) : (
         section
       )
