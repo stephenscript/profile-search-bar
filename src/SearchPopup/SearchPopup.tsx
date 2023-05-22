@@ -2,7 +2,7 @@ import React from "react";
 import { Profile, SearchPopupProps } from "../types";
 import SearchPopupSection from "./SearchPopupSection";
 import SearchResultCard from "../SearchResultCard/SearchResultCard";
-import "./SearchPopup.css";
+import styles from "./SearchPopup.module.css";
 
 function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
   if (!searchResults) return null;
@@ -15,13 +15,13 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
     const items = searchResults[type];
     // create card for every entry of section type
     const cards = items.map((item: Profile) => (
-      <SearchResultCard key={item.objectID} profile={item} />
+      <SearchResultCard key={item.objectID} profile={item}/>
     ));
     // create section with cards for each section type
     // adds divider if more than one section present
     return (
       <React.Fragment key={index}>
-        {index > 0 && <div className="thin-divider"></div>}
+        {index > 0 && <div className={styles.thinDivider}></div>}
         <SearchPopupSection input={input} cards={cards} type={type} />
       </React.Fragment>
     );
@@ -29,13 +29,13 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
 
   return showResults ? (
     <>
-      <div className="search-popup">
-        <div className="thin-divider no-padding"></div>
-        <div className="content">
+      <div className={styles.searchPopup}>
+        <div className={`${styles.thinDivider} ${styles.noPadding}`}></div>
+        <div className={styles.content}>
           {sections.length ? (
             sections
           ) : (
-            <span className="no-results">No results for "{input}"</span>
+            <span className={styles.noResults}>No results for "{input}"</span>
           )}
         </div>
       </div>

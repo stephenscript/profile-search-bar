@@ -1,4 +1,4 @@
-#search-bar {
+.searchBar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,12 +17,12 @@
   transition: 0.1s;
 }
 
-.bar-open {
+.barOpen {
   width: 360px;
   background-color: white;
   transition: 0.1s;
   border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 00px;
+  border-bottom-right-radius: 0px;
 }
 
 .mag {
@@ -47,7 +47,7 @@
   justify-self: center;
 }
 
-#search {
+.searchInput {
   all: unset;
   position: absolute;
   align-self: center;
@@ -59,7 +59,7 @@
   font-size: 16px;
 }
 
-#search::placeholder {
+.searchInput::placeholder {
   color: rgb(0, 0, 0, 30%);
 }
 

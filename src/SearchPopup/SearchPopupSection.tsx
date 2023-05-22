@@ -1,4 +1,5 @@
 import React from "react";
+import style from './SearchPopup.module.css';
 
 const SearchPopupSection = ({
   input,
@@ -10,7 +11,7 @@ const SearchPopupSection = ({
   type: string;
 }) => {
   return (
-    <section key={`${type}-section`} className="search-popup-section">
+    <section key={`${type}-section`} className={style.searchPopupSection}>
       <span>
         {input ? type[0].toUpperCase() + type.slice(1) : `Popular ${type}`}
       </span>

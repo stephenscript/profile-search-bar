@@ -1,4 +1,5 @@
-import "./SearchResultCard.css";
+import React from "react";
+import styles from "./SearchResultCard.module.css";
 import { octothorp, letterT } from "../assets/svgs";
 import { Profile } from "../types";
 
@@ -11,7 +12,7 @@ const getProfileImage = (profile: Profile) => {
       return (
         <img
           src={cloudinaryUrlPrefix + profile.trending_image}
-          className="search-result-card-pic"
+          className={styles.searchResultCardPic}
         />
       );
     case "topics":
@@ -42,9 +43,9 @@ const getSubtext = (profile: Profile) => {
 function SearchResultCard({ profile }: { profile: Profile }) {
   return (
     <>
-      <div className="search-result-card">
+      <div className={styles.searchResultCard}>
         <div
-          className="search-result-card-pic"
+          className={styles.searchResultCardPic}
           style={
             profile.type !== "user-profiles"
               ? { outline: "1px solid rgb(227, 227, 227)" }
@@ -53,9 +54,11 @@ function SearchResultCard({ profile }: { profile: Profile }) {
         >
           {getProfileImage(profile)}
         </div>
-        <div className="search-result-card-content">
-          <pre id="profile-name">{profile.name || profile.title}</pre>
-          <pre id="profile-subtext">{getSubtext(profile)}</pre>
+        <div className={styles.searchResultCardContent}>
+          <pre className={styles.profileName}>
+            {profile.name || profile.title}
+          </pre>
+          <pre className={styles.profileSubtext}>{getSubtext(profile)}</pre>
         </div>
       </div>
     </>

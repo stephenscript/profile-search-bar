@@ -1,23 +1,24 @@
-.search-result-card {
+.searchResultCard {
   display: flex;
   cursor: pointer;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px 2px 20px;
   gap: 10px;
 }
 
-.search-result-card:hover {
+.searchResultCard:hover {
   background-color: rgb(239, 239, 239);
 }
 
-.search-result-card-content {
+.searchResultCardContent {
   display: flex;
   flex-direction: column;
 }
 
-.search-result-card-pic {
+.searchResultCardPic {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
   height: 44px;
   width: 44px;
   border-radius: 50%;
@@ -35,12 +36,12 @@ pre {
   text-overflow: ellipsis;
 }
 
-#profile-name {
+.profileName {
   font-family: "Circular";
   font-size: 19px;
 }
 
-#profile-subtext {
+.profileSubtext {
   font-family: "Roboto";
   font-size: 13px;
   color: #6f6f6f;
