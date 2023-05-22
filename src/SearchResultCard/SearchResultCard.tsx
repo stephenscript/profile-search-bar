@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SearchResultCard.module.css";
 import { octothorp, letterT } from "../assets/svgs";
 import { Profile } from "../types";
