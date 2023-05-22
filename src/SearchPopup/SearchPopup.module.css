@@ -8,6 +8,7 @@
   outline: 1px solid #e1e1e3;
   overflow: hidden;
   background-color: white;
+  padding-bottom: 20px;
 }
 
 .searchPopupSection {
