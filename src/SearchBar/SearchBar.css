@@ -20,7 +20,9 @@
 .bar-open {
   width: 360px;
   background-color: white;
-  transition: 0.1s
+  transition: 0.1s;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 00px;
 }
 
 .mag {

@@ -27,25 +27,28 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
   }, [searchResults]);
 
   const mentorSection = searchResults.mentors.length ? (
-    <section className="search-popup-section-name">
+    <section key="mentors-section" className="search-popup-section">
       <span>{input ? "Mentors" : "Popular mentors"}</span>
       {mentorCards}
     </section>
   ) : null;
 
   const topicSection = searchResults.topics.length ? (
-    <section className="search-popup-section-name">
+    <section key="topics-section" className="search-popup-section">
+      <div className="thin-divider"></div>
       <span>{input ? "Topics" : "Popular topics"}</span>
       {topicCards}
     </section>
   ) : null;
 
   const articleSection = searchResults.articles.length ? (
-    <section className="search-popup-section-name">
+    <section key="articles-section" className="search-popup-section">
+      <div className="thin-divider"></div>
       <span>{input ? "Articles" : "Popular Articles"}</span>
       {articleCards}
     </section>
   ) : null;
+
   const sections = [mentorSection, topicSection, articleSection].filter(
     (section) => section
   );
@@ -53,8 +56,13 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
   return showResults ? (
     <>
       <div className="search-popup">
+        <div className="thin-divider no-padding"></div>
         <div className="content">
-          {sections.length ? sections : `No results for ${input}`}
+          {sections.length ? (
+            sections
+          ) : (
+            <span className="no-results">No results for "{input}"</span>
+          )}
         </div>
       </div>
     </>

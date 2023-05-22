@@ -27,7 +27,7 @@ const getSubtext = (profile: Profile) => {
     case "user-profiles":
       return profile.credentials.split(",").join(",\n");
     case "topics":
-      return profile.length;
+      return profile.length + ' mentors';
     case "content-articles":
       return profile.topics[0].name;
   }
@@ -37,7 +37,7 @@ function SearchResultCard({ profile }: { profile: Profile }) {
   return (
     <>
       <div className="search-result-card">
-        <div className="search-result-card-pic" style={profile.type !== 'user-profiles' ? {outline: '1px solid gray'} : {outline: 'none'}}>{getProfileImage(profile)}</div>
+        <div className="search-result-card-pic" style={profile.type !== 'user-profiles' ? {outline: '1px solid rgb(227, 227, 227)'} : {outline: 'none'}}>{getProfileImage(profile)}</div>
         <div className="search-result-card-content">
           <pre id="profile-name">{profile.name || profile.title}</pre>
           <pre id="profile-subtext">{getSubtext(profile)}</pre>

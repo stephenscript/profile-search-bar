@@ -9,6 +9,13 @@
   font-family: "Circular";
   src: url("./src/assets/fonts/Circular/CircularStd-Medium.otf")
     format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("./src/assets/fonts/Circular/CircularStd-Bold.otf")
+    format("truetype");
   font-weight: bold;
 }
 
