@@ -7,10 +7,12 @@ A responsive search bar that interacts with the Algolia and Cloudinary API to pr
 - Vite
 - React
 - TypeScript
+  
 ## Features
 
 - Custom Hook UseSearch()
   - Usage:
+  
     ```js
     const [searchResult, setSearchTerm] = useSearch(SearchCache);
     /*
@@ -18,12 +20,16 @@ A responsive search bar that interacts with the Algolia and Cloudinary API to pr
     // returns searchResult<Object> and setSearchTerm<Setter>
     */
     ```
+
   - Handles queries to Algolia's API and caches previously searched values
 - CSS Modules
   - provides consistent and reliable styling
 - Modular code structure
   - makes adding and removing search sections and new search cards simple
   
-  ## Author
+## Data Flow Diagram
 
-  - [Stephen Rivas](https://stephenrivas.com)
+![Diagram](./DataFlow.jpg)
+## Author
+
+- [Stephen Rivas](https://stephenrivas.com)
