@@ -37,7 +37,6 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
 
   const topicSection = searchResults?.topics.length ? (
     <section key="topics-section" className="search-popup-section">
-      <div className="thin-divider"></div>
       <span>{input ? "Topics" : "Popular topics"}</span>
       {topicCards}
     </section>
@@ -45,15 +44,24 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
 
   const articleSection = searchResults?.articles.length ? (
     <section key="articles-section" className="search-popup-section">
-      <div className="thin-divider"></div>
       <span>{input ? "Articles" : "Popular Articles"}</span>
       {articleCards}
     </section>
   ) : null;
 
-  const sections = [mentorSection, topicSection, articleSection].filter(
-    (section) => section
-  );
+  // filter out null sections and put dividers in between if more than one section
+  const sections = [mentorSection, topicSection, articleSection]
+    .filter((section) => section)
+    .map((section, i) =>
+      i > 0 ? (
+        <>
+          <div className="thin-divider"></div>
+          {section}
+        </>
+      ) : (
+        section
+      )
+    );
 
   return showResults ? (
     <>

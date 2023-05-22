@@ -8,7 +8,11 @@ const search = async (
   searchCache: SearchCache
 ) => {
   // return results from cache if present
-  if (searchTerm in searchCache) return searchCache[searchTerm];
+  if (searchTerm in searchCache) {
+    console.log("Profiles from cache");
+    return searchCache[searchTerm];
+  }
+  console.log("Profiles from algolia search");
   const results: { [key: string]: any } = {};
   try {
     for (const [name, index] of Object.entries(indices)) {
