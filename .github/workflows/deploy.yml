@@ -11,8 +11,8 @@ on:
 
 # 👇 global env
 env:
-  VITE_ALGOLIA_ID: true
-  VITE_ALGOLIA_API_KEY: true
+  VITE_ALGOLIA_ID: ${{ vars.VITE_ALGOLIA_ID }}
+  VITE_ALGOLIA_API_KEY: ${{ vars.VITE_ALGOLIA_API_KEY }}
 
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
