@@ -1,11 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import algoliasearch, { SearchIndex } from "algoliasearch/lite";
+import { Profile, SearchResults, SearchSetter } from "../types";
 
-const search = async (indices: SearchIndex[], searchTerm: string) => {
+const search = async (
+  indices: Record<string, SearchIndex>,
+  searchTerm: string
+) => {
   const results: { [key: string]: any } = {};
   try {
     for (const [name, index] of Object.entries(indices)) {
-      const res = await index.search([searchTerm]);
+      const res = await index.search(searchTerm);
       // default to top 6 most popular results
       results[name] = searchTerm ? res.hits : res.hits.slice(0, 6);
     }
@@ -15,7 +19,7 @@ const search = async (indices: SearchIndex[], searchTerm: string) => {
   }
 };
 
-export function useSearch() {
+export function useSearch(): [SearchResults, SearchSetter] {
   // initialize algolia client
   const algolia = useRef<any>(
     algoliasearch(
@@ -25,27 +29,27 @@ export function useSearch() {
   );
 
   // initialize algolia client indices
-  const mentorsIndex = useRef<SearchIndex | null>(
+  const mentorsIndex = useRef<SearchIndex>(
     algolia.current?.initIndex("production_user_profiles")
   );
-  const topicsIndex = useRef<SearchIndex | null>(
+  const topicsIndex = useRef<SearchIndex>(
     algolia.current?.initIndex("production_topics")
   );
-  const articlesIndex = useRef<SearchIndex | null>(
+  const articlesIndex = useRef<SearchIndex>(
     algolia.current?.initIndex("production_content_articles")
   );
 
   // provide a label to each index
-  const indices = {
+  const indices: Record<string, SearchIndex> = {
     mentors: mentorsIndex.current,
     topics: topicsIndex.current,
     articles: articlesIndex.current,
   };
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setResults] = useState<{ [key: string]: any } | null>(
-    null
-  );
+  const [searchResults, setResults] = useState<{
+    [key: string]: Profile[];
+  } | null>(null);
 
   useEffect(() => {
     search(indices, searchTerm).then((res = {}) => {

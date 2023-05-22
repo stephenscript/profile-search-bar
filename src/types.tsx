@@ -1,3 +1,4 @@
+
 export interface Profile {
   type: string;
   name: string;
@@ -6,13 +7,17 @@ export interface Profile {
   username: string;
   title: string;
   sort_index: number;
-  topics?: object[];
+  topics?: {[key:string]: string}[];
   objectID: string;
   trending_image: string;
   trending_image_base64: string;
   length?: number;
 }
 export interface SearchPopupProps {
-  searchResults: Record<string, any>;
+  searchResults: SearchResults;
   showResults: boolean;
+  input: string;
 }
+
+export type SearchResults = { [key: string]: Profile[] } | null;
+export type SearchSetter = React.Dispatch<React.SetStateAction<string>>;

@@ -1,11 +1,15 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSearch } from "./UseSearch";
 
 import "./SearchBar.css";
 import SearchPopup from "../SearchPopup/SearchPopup";
 import { magnifyingGlass, xButton, circle } from "../assets/svgs";
 
-const handleClose = (input, setInput, setShowResults) => {
+const handleClose = (
+  input: string,
+  setInput: (arg0: string) => void,
+  setShowResults: (arg0: boolean) => void
+) => {
   if (!input.length) {
     setShowResults(false);
   } else {
@@ -16,7 +20,7 @@ const handleClose = (input, setInput, setShowResults) => {
 function SearchBar() {
   const [input, setInput] = useState("");
   const [searchResults, setSearchTerm] = useSearch();
-  const [showResults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
     const id = setTimeout(() => setSearchTerm(input), 0);

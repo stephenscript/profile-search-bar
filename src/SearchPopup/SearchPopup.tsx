@@ -4,11 +4,13 @@ import { Profile, SearchPopupProps } from "../types";
 import SearchResultCard from "../SearchResultCard/SearchResultCard";
 
 function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
-  const [mentorCards, setMentorCards] = useState(null);
-  const [topicCards, setTopicCards] = useState(null);
-  const [articleCards, setArticleCards] = useState(null);
+  const [mentorCards, setMentorCards] = useState<React.ReactNode[]>([]);
+  const [topicCards, setTopicCards] = useState<React.ReactNode[]>([]);
+  const [articleCards, setArticleCards] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
+    if (!searchResults) return;
+
     setMentorCards(
       searchResults.mentors.map((mentor: Profile) => (
         <SearchResultCard key={mentor.objectID} profile={mentor} />
@@ -26,14 +28,14 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
     );
   }, [searchResults]);
 
-  const mentorSection = searchResults.mentors.length ? (
+  const mentorSection = searchResults?.mentors.length ? (
     <section key="mentors-section" className="search-popup-section">
       <span>{input ? "Mentors" : "Popular mentors"}</span>
       {mentorCards}
     </section>
   ) : null;
 
-  const topicSection = searchResults.topics.length ? (
+  const topicSection = searchResults?.topics.length ? (
     <section key="topics-section" className="search-popup-section">
       <div className="thin-divider"></div>
       <span>{input ? "Topics" : "Popular topics"}</span>
@@ -41,7 +43,7 @@ function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
     </section>
   ) : null;
 
-  const articleSection = searchResults.articles.length ? (
+  const articleSection = searchResults?.articles.length ? (
     <section key="articles-section" className="search-popup-section">
       <div className="thin-divider"></div>
       <span>{input ? "Articles" : "Popular Articles"}</span>
