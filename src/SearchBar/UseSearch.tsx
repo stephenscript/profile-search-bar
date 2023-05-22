@@ -12,6 +12,7 @@ const search = async (
     console.log("Profiles from cache");
     return searchCache[searchTerm];
   }
+  // query algolia index and store in cache
   console.log("Profiles from algolia search");
   const results: { [key: string]: any } = {};
   try {

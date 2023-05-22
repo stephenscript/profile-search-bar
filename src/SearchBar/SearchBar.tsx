@@ -5,7 +5,7 @@ import "./SearchBar.css";
 import SearchPopup from "../SearchPopup/SearchPopup";
 import { magnifyingGlass, xButton, circle } from "../assets/svgs";
 
-// close popup if no input
+// close SearchPopup if no input
 const handleClose = (
   input: string,
   setInput: (arg0: string) => void,
@@ -53,13 +53,11 @@ function SearchBar({ searchCache }: SearchCache) {
             ) : null}
           </div>
         </div>
-        {showResults ? (
-          <SearchPopup
-            searchResults={searchResults}
-            showResults={showResults}
-            input={input}
-          />
-        ) : null}
+        <SearchPopup
+          searchResults={searchResults}
+          showResults={showResults}
+          input={input}
+        />
       </div>
       {showResults ? (
         <div className="backdrop" onClick={() => setShowResults(false)}></div>

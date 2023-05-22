@@ -1,67 +1,31 @@
-import React, { useEffect, useState } from "react";
-import "./SearchPopup.css";
+import React from "react";
 import { Profile, SearchPopupProps } from "../types";
+import SearchPopupSection from "./SearchPopupSection";
 import SearchResultCard from "../SearchResultCard/SearchResultCard";
+import "./SearchPopup.css";
 
 function SearchPopup({ searchResults, showResults, input }: SearchPopupProps) {
-  const [mentorCards, setMentorCards] = useState<React.ReactNode[]>([]);
-  const [topicCards, setTopicCards] = useState<React.ReactNode[]>([]);
-  const [articleCards, setArticleCards] = useState<React.ReactNode[]>([]);
+  if (!searchResults) return null;
+  // only display sections with valid results
+  const sectionsWithHits = ["mentors", "topics", "articles"].filter(
+    (type) => searchResults[type].length
+  );
 
-  useEffect(() => {
-    if (!searchResults) return;
-
-    setMentorCards(
-      searchResults.mentors.map((mentor: Profile) => (
-        <SearchResultCard key={mentor.objectID} profile={mentor} />
-      ))
+  const sections = sectionsWithHits.map((type, index) => {
+    const items = searchResults[type];
+    // create card for every entry of section type
+    const cards = items.map((item: Profile) => (
+      <SearchResultCard key={item.objectID} profile={item} />
+    ));
+    // create section with cards for each section type
+    // adds divider if more than one section present
+    return (
+      <React.Fragment key={index}>
+        {index > 0 && <div className="thin-divider"></div>}
+        <SearchPopupSection input={input} cards={cards} type={type} />
+      </React.Fragment>
     );
-    setTopicCards(
-      searchResults.topics.map((topic: Profile) => (
-        <SearchResultCard key={topic.objectID} profile={topic} />
-      ))
-    );
-    setArticleCards(
-      searchResults.articles.map((article: Profile) => (
-        <SearchResultCard key={article.objectID} profile={article} />
-      ))
-    );
-  }, [searchResults]);
-
-  const mentorSection = searchResults?.mentors.length ? (
-    <section key="mentors-section" className="search-popup-section">
-      <span>{input ? "Mentors" : "Popular mentors"}</span>
-      {mentorCards}
-    </section>
-  ) : null;
-
-  const topicSection = searchResults?.topics.length ? (
-    <section key="topics-section" className="search-popup-section">
-      <span>{input ? "Topics" : "Popular topics"}</span>
-      {topicCards}
-    </section>
-  ) : null;
-
-  const articleSection = searchResults?.articles.length ? (
-    <section key="articles-section" className="search-popup-section">
-      <span>{input ? "Articles" : "Popular Articles"}</span>
-      {articleCards}
-    </section>
-  ) : null;
-
-  // filter out null sections and put dividers in between if more than one section
-  const sections = [mentorSection, topicSection, articleSection]
-    .filter((section) => section)
-    .map((section, i) =>
-      i > 0 ? (
-        <React.Fragment key={i}>
-          <div className="thin-divider"></div>
-          {section}
-          </React.Fragment>
-      ) : (
-        section
-      )
-    );
+  });
 
   return showResults ? (
     <>
