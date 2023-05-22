@@ -24,7 +24,13 @@ const getProfileImage = (profile: Profile) => {
 const getSubtext = (profile: Profile) => {
   switch (profile.type) {
     case "user-profiles":
-      return profile.credentials.split(",").join(",\n");
+      const profile2 = profile.credentials.split(",");
+      return (
+        <div>
+          {profile2[0]},<br></br>
+          <div>{profile2[1]}</div>
+        </div>
+      );
     case "topics":
       return profile.length + " mentors";
     case "content-articles":

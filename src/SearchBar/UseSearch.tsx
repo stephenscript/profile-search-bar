@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import algoliasearch, { SearchIndex } from "algoliasearch/lite";
-import { Profile, SearchResults, SearchSetter } from "../types";
+import { Profile, SearchResults, SearchSetter, SearchCache } from "../types";
 
 const search = async (
   indices: Record<string, SearchIndex>,
-  searchTerm: string
+  searchTerm: string,
+  searchCache: SearchCache
 ) => {
+  // return results from cache if present
+  if (searchTerm in searchCache) return searchCache[searchTerm];
   const results: { [key: string]: any } = {};
   try {
     for (const [name, index] of Object.entries(indices)) {
@@ -13,13 +16,15 @@ const search = async (
       // default to top 6 most popular results
       results[name] = searchTerm ? res.hits : res.hits.slice(0, 6);
     }
-    return results;
+    return (searchCache[searchTerm] = results);
   } catch (err) {
     console.log(err);
   }
 };
 
-export function useSearch(): [SearchResults, SearchSetter] {
+export function useSearch(
+  searchCache: SearchCache
+): [SearchResults, SearchSetter] {
   // initialize algolia client
   const algolia = useRef<any>(
     algoliasearch(
@@ -52,7 +57,7 @@ export function useSearch(): [SearchResults, SearchSetter] {
   } | null>(null);
 
   useEffect(() => {
-    search(indices, searchTerm).then((res = {}) => {
+    search(indices, searchTerm, searchCache).then((res = {}) => {
       setResults(res);
     });
   }, [searchTerm]);

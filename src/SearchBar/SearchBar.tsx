@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSearch } from "./UseSearch";
-
+import { SearchCache } from "../types";
 import "./SearchBar.css";
 import SearchPopup from "../SearchPopup/SearchPopup";
 import { magnifyingGlass, xButton, circle } from "../assets/svgs";
 
+// close popup if no input
 const handleClose = (
   input: string,
   setInput: (arg0: string) => void,
@@ -17,9 +18,9 @@ const handleClose = (
   }
 };
 
-function SearchBar() {
+function SearchBar({ searchCache }: SearchCache) {
   const [input, setInput] = useState("");
-  const [searchResults, setSearchTerm] = useSearch();
+  const [searchResults, setSearchTerm] = useSearch(searchCache);
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {

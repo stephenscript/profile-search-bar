@@ -1,4 +1,3 @@
-
 export interface Profile {
   type: string;
   name: string;
@@ -7,7 +6,7 @@ export interface Profile {
   username: string;
   title: string;
   sort_index: number;
-  topics?: {[key:string]: string}[];
+  topics?: { [key: string]: string }[];
   objectID: string;
   trending_image: string;
   trending_image_base64: string;
@@ -21,3 +20,4 @@ export interface SearchPopupProps {
 
 export type SearchResults = { [key: string]: Profile[] } | null;
 export type SearchSetter = React.Dispatch<React.SetStateAction<string>>;
+export type SearchCache = { [key: string]: SearchCache };
