@@ -1,6 +1,6 @@
 # Profile Search Bar
 
-A search bar that interacts with the Algolia and Cloudinary API to present relevant results to the user
+A responsive search bar that interacts with the Algolia and Cloudinary API to present relevant results to the user
 
 ## Stack
 
