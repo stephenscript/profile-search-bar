@@ -1,4 +1,3 @@
-import { MutableRefObject } from "react";
 export interface Profile {
   type: string;
   name: string;
