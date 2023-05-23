@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, MutableRefObject } from "react";
 import algoliasearch, { SearchIndex } from "algoliasearch/lite";
 import { Profile, SearchResults, SearchSetter, SearchCache } from "../types";
 
@@ -15,6 +15,7 @@ const search = async (
   // query algolia index and store in cache
   console.log("Profiles from algolia search");
   const results: { [key: string]: any } = {};
+  results.searchTerm = searchTerm;
   try {
     for (const [name, index] of Object.entries(indices)) {
       const res = await index.search(searchTerm);
@@ -56,14 +57,15 @@ export function useSearch(
     articles: articlesIndex.current,
   };
 
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  
+  const [searchTerm, setSearchTerm] = useState<[string, MutableRefObject<string | null>]>(['', useRef<string | null>(null)]);
   const [searchResults, setResults] = useState<{
     [key: string]: Profile[];
   } | null>(null);
 
   useEffect(() => {
-    search(indices, searchTerm, searchCache).then((res = {}) => {
-      setResults(res);
+    search(indices, searchTerm[0], searchCache).then((res = {}) => {
+      if (searchTerm[0] === searchTerm[1]?.current) setResults(res);
     });
   }, [searchTerm]);
 

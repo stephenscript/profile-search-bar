@@ -1,3 +1,4 @@
+import { MutableRefObject } from "react";
 export interface Profile {
   type: string;
   name: string;
@@ -19,5 +20,5 @@ export interface SearchPopupProps {
 }
 
 export type SearchResults = { [key: string]: Profile[] } | null;
-export type SearchSetter = React.Dispatch<React.SetStateAction<string>>;
+export type SearchSetter = (searchTerm: [string, MutableRefObject<string | null>]) => void;
 export type SearchCache = { [key: string]: SearchCache };

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearch } from "./UseSearch";
 import { SearchCache } from "../types";
 import styles from "./SearchBar.module.css";
@@ -18,12 +18,13 @@ const handleClose = (
 };
 
 function SearchBar({ searchCache }: SearchCache) {
+  const inputRef = useRef("");
   const [input, setInput] = useState("");
   const [searchResults, setSearchTerm] = useSearch(searchCache);
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
-    const id = setTimeout(() => setSearchTerm(input), 0);
+    const id = setTimeout(() => setSearchTerm([input, inputRef]));
     return () => clearTimeout(id);
   }, [input]);
 
@@ -34,7 +35,10 @@ function SearchBar({ searchCache }: SearchCache) {
           <input
             className={styles.searchInput}
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              setInput(e.target.value);
+              inputRef.current = e.target.value;
+            }}
             placeholder="Search for mentors"
             onFocus={() => setShowResults(true)}
             autoComplete="off"
