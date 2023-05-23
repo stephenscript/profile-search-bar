@@ -13,20 +13,19 @@ const handleClose = (
   if (!input.length) {
     setShowResults(false);
   } else {
-    setInput("");
+    setInput('');
   }
 };
 
 function SearchBar({ searchCache }: SearchCache) {
-  const inputRef = useRef("");
+  const inputRef = useRef('');
   const [input, setInput] = useState("");
-  const [searchResults, setSearchTerm] = useSearch(searchCache);
+  const [searchResults, setSearchTerm] = useSearch(searchCache, inputRef);
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
-    const id = setTimeout(() => setSearchTerm([input, inputRef]));
-    return () => clearTimeout(id);
-  }, [input]);
+    setSearchTerm('');
+  }, [])
 
   return (
     <>
@@ -37,6 +36,7 @@ function SearchBar({ searchCache }: SearchCache) {
             value={input}
             onChange={(e) => {
               setInput(e.target.value);
+              setSearchTerm(e.target.value);
               inputRef.current = e.target.value;
             }}
             placeholder="Search for mentors"

@@ -15,7 +15,6 @@ const search = async (
   // query algolia index and store in cache
   console.log("Profiles from algolia search");
   const results: { [key: string]: any } = {};
-  results.searchTerm = searchTerm;
   try {
     for (const [name, index] of Object.entries(indices)) {
       const res = await index.search(searchTerm);
@@ -29,7 +28,8 @@ const search = async (
 };
 
 export function useSearch(
-  searchCache: SearchCache
+  searchCache: SearchCache,
+  inputRef: MutableRefObject<string>
 ): [SearchResults, SearchSetter] {
   // initialize algolia client
   const algolia = useRef<any>(
@@ -58,14 +58,14 @@ export function useSearch(
   };
 
   
-  const [searchTerm, setSearchTerm] = useState<[string, MutableRefObject<string | null>]>(['', useRef<string | null>(null)]);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchResults, setResults] = useState<{
     [key: string]: Profile[];
   } | null>(null);
 
   useEffect(() => {
-    search(indices, searchTerm[0], searchCache).then((res = {}) => {
-      if (searchTerm[0] === searchTerm[1]?.current) setResults(res);
+    search(indices, searchTerm, searchCache).then((res = {}) => {
+      if(searchTerm === inputRef.current) setResults(res);
     });
   }, [searchTerm]);
 

@@ -20,5 +20,5 @@ export interface SearchPopupProps {
 }
 
 export type SearchResults = { [key: string]: Profile[] } | null;
-export type SearchSetter = (searchTerm: [string, MutableRefObject<string | null>]) => void;
+export type SearchSetter = (searchTerm: string) => void;
 export type SearchCache = { [key: string]: SearchCache };
